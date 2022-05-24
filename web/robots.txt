@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Allow: *.css
+Allow: *.js
+
+User-agent: Yandex
+Allow: /
+
+Host: https://allusaparts.com
+
+Sitemap: https://allusaparts.com/sitemap.xml

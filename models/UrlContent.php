@@ -9,6 +9,8 @@ use Yii;
  *
  * @property string $url
  * @property string $content
+ * @property string $before_content
+ * @property string $after_content
  */
 class UrlContent extends \yii\db\ActiveRecord
 {
@@ -26,7 +28,8 @@ class UrlContent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['url', 'content'], 'required']
+            [['url'], 'required'],
+            [['content', 'before_content', 'after_content'], 'text']
         ];
     }
 
@@ -37,7 +40,9 @@ class UrlContent extends \yii\db\ActiveRecord
     {
         return [
             'url' => 'Адрес',
-            'content' => 'Контент'
+            'before_content' => 'Перед контентом',
+            'content' => 'Контент',
+            'after_content' => 'После контента'
         ];
     }
 }

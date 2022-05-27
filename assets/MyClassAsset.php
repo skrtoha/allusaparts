@@ -41,7 +41,7 @@ class MyClassAsset extends AssetBundle
         'position' => View::POS_HEAD
     ];
     public $depends = [
-        //'yii\web\YiiAsset',
+        'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
     ];
 }

@@ -168,18 +168,19 @@ else{
             <section class="container">
                 <div class="row">
                     <div id="url_content_wrap">
-                        <div id="url_content">
-                            <?if ($urlcontentObject->before_content){?>
-                                <?=$urlcontentObject->before_content?>
-                            <?}?>
-                            <?if ($urlcontentObject->content){?>
+                        <?if ($urlcontentObject->before_content){?>
+                            <?=$urlcontentObject->before_content?>
+                        <?}?>
+                        <?if ($urlcontentObject->content){?>
+                            <a href="#" id="showUrlContent">Показать</a>
+                            <div id="url_content">
                                 <?=$urlcontentObject->content?>
-                            <?}?>
-                            <?if ($urlcontentObject->after_content){?>
-                                <?=$urlcontentObject->after_content?>
-                            <?}?>
-                        </div>
-                        <a href="#" id="showUrlContent">Показать</a>
+                            </div>
+                        <?}?>
+                        <?if ($urlcontentObject->after_content){?>
+                            <?=$urlcontentObject->after_content?>
+                        <?}?>
+
                     </div>
                 </div>
             </section>
@@ -196,7 +197,7 @@ else{
         $('#showUrlContent').on('click', function(e){
             e.preventDefault();
             const $th = $(this);
-            $th.prevAll('#url_content').toggleClass('active_1');
+            $th.next().toggleClass('active_1');
         })
     </script>
 <?}?>

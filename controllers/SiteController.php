@@ -225,6 +225,8 @@ class SiteController extends Controller
             $model->url = $_POST['UrlContent']['url'];
         }
         $model->content = $_POST['UrlContent']['content'];
+        $model->before_content = $_POST['UrlContent']['before_content'] ?: null;
+        $model->after_content = $_POST['UrlContent']['after_content'] ?: null;
         $model->save();
         return $this->redirect($url);
     }

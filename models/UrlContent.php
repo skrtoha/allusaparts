@@ -29,7 +29,7 @@ class UrlContent extends \yii\db\ActiveRecord
     {
         return [
             [['url'], 'required'],
-            [['content', 'before_content', 'after_content'], 'text']
+            [['content', 'before_content', 'after_content'], 'string']
         ];
     }
 
@@ -39,7 +39,7 @@ class UrlContent extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'url' => 'Адрес',
+            'url' => '',
             'before_content' => 'Перед контентом',
             'content' => 'Контент',
             'after_content' => 'После контента'

@@ -1761,16 +1761,14 @@ strong{
   font-weight: bold;
 }
 #showUrlContent{
-    margin-top: 20px;
     display: block;
+    padding-bottom: 22px;
 }
 #url_content{
-    height: 50px;
-    margin-top: 15px;
-    overflow: hidden;
+    display: none;
 }
 #url_content.active_1{
-    height: auto;
+    display: block;
 }
 #editTags{
     background: white;

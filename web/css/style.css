@@ -1762,13 +1762,14 @@ strong{
 }
 #showUrlContent{
     display: block;
-    padding-bottom: 22px;
 }
 #url_content{
-    display: none;
+    height: 40px;
+    margin-top: 15px;
+    overflow: hidden;
 }
 #url_content.active_1{
-    display: block;
+    height: auto;
 }
 #editTags{
     background: white;

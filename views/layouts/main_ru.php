@@ -172,10 +172,10 @@ else{
                             <?=$urlcontentObject->before_content?>
                         <?}?>
                         <?if ($urlcontentObject->content){?>
-                            <a href="#" id="showUrlContent">Показать</a>
                             <div id="url_content">
                                 <?=$urlcontentObject->content?>
                             </div>
+                            <a href="#" id="showUrlContent">Показать</a>
                         <?}?>
                         <?if ($urlcontentObject->after_content){?>
                             <?=$urlcontentObject->after_content?>
@@ -197,7 +197,7 @@ else{
         $('#showUrlContent').on('click', function(e){
             e.preventDefault();
             const $th = $(this);
-            $th.next().toggleClass('active_1');
+            $th.prev().toggleClass('active_1');
         })
     </script>
 <?}?>

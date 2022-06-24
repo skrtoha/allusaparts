@@ -13,4 +13,5 @@ return [
     'onPageInvoices'=>15,
     'onPageOnhandA'=>15,
     'onPageOrders'=>15,
+    'admin_id' => 45795
 ];

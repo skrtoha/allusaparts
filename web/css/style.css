@@ -1771,7 +1771,7 @@ strong{
 #url_content.active_1{
     height: auto;
 }
-#editTags{
+.edit{
     background: white;
     display: block;
     text-align: center;
@@ -1801,3 +1801,78 @@ strong{
     transition: all .3s;
 }
 .tags a:hover { border: 1px solid #e2e2e2; color: #ccc; }
+
+.form-group {
+    margin-bottom: 15px;
+}
+label {
+    font-weight: 400;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+input[type='text'] {
+    border: 1px solid #ddd;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    padding: 10px;
+    border-radius: 0px !important;
+    box-sizing: border-box;
+}
+.form-control {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+.allusaparts-page-update {
+    background: white;
+    margin-top: -30px;
+}
+input[name="AllusapartsVideolink[]"]{
+    padding-right: 30px;
+    margin-top: 10px;
+}
+a.videolink_remove{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 6px;
+    top: 8px;
+    background: url(/images/delete_icon.png) center no-repeat;
+    background-size: cover;
+}
+div.videolink{
+    position: relative;
+}
+#mainmenu_add,
+#submenu_add{
+    background: url(/images/add_icon.png) center no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    padding: 0;
+    position: relative;
+    top: 16px;
+}
+#submenu_add{
+    top: 0;
+}

@@ -2,38 +2,15 @@
 
 namespace app\controllers;
 
-use app\models\ChangepasswordForm;
-use app\models\Clientbasket;
-use app\models\Clientordercontent;
-use app\models\Clientordersbyemail;
-use app\models\Clients;
-use app\models\DealerpricesMarkup;
-use app\models\ForgotpassForm;
-use app\models\MydataForm;
-use app\models\OnhandaContent;
-use app\models\OnhandaMain;
-use app\models\OnhandcContent;
-use app\models\OnhandcMain;
-use app\models\OnhandaTracknumbers;
-use app\models\Ordercontent;
-use app\models\Orders;
-use app\models\Tracktry;
-use app\models\Paid;
-use app\models\PaymentForm;
-use app\models\PlaceorderForm;
-use app\models\SavedOrders;
-use app\models\SignupForm;
-use app\models\PHPMailer;
-use app\models\OtherFunctions;
-use app\models\TracknumbersSearch;
+use app\models\AllusapartsMenu;
+use app\models\AllusapartsPage;
+use app\models\AllusapartsVideolink;
 use app\models\UrlContent;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
-use yii\web\Response;
 use yii\web\HttpException;
 
 use net\authorize\api\contract\v1 as AnetAPI;
@@ -178,18 +155,30 @@ class SiteController extends Controller
     public function actionRubrands($brand)
     {
         $this->layout = 'main_ru';
-        $lower_brand = [];
-        foreach ($this->ru_brands as $b) {
-            $lower_brand[] = strtolower($b);
-        }
-        if (!in_array($brand, $lower_brand)) {
-            throw new HttpException(
-                404,
-                'Запрошенная страница не найдена'
-            );
-        }
+        $brandInfo = [];
+        $result = AllusapartsMenu::activeQueryMenu()
+            ->where(['m.url' => '/brands/'.$brand])
+            ->asArray()
+            ->all();
 
-        return $this->render('rubrands', ['brand' => $brand]);
+        if (empty($result)) throw new HttpException(
+            404,
+            'Запрошенная страница не найдена'
+        );
+
+        foreach($result as $r){
+            $brandInfo['text'] = $r['text'];
+            $brandInfo['h1'] = $r['h1'];
+            $brandInfo['title'] = $r['title'];
+            $brandInfo['description'] = $r['description'];
+            $brandInfo['url'] = $r['url'];
+            $brandInfo['name'] = $r['name'];
+            if (isset($r['link'])) $brandInfo['links'][] = $r['link'];
+        }
+        return $this->render('rubrands', [
+            'brand' => $brand,
+            'brandInfo' => $brandInfo
+        ]);
     }
 
     public function actionError()
@@ -198,6 +187,7 @@ class SiteController extends Controller
         if ($exception !== null) {
             return $this->render('error', ['exception' => $exception]);
         }
+        else return null;
     }
 
     public function actionLogin(){
@@ -223,11 +213,20 @@ class SiteController extends Controller
         if (!$model){
             $model = new UrlContent();
             $model->url = $_POST['UrlContent']['url'];
+            $model->website = 1;
         }
         $model->content = $_POST['UrlContent']['content'];
         $model->before_content = $_POST['UrlContent']['before_content'] ?: null;
         $model->after_content = $_POST['UrlContent']['after_content'] ?: null;
         $model->save();
         return $this->redirect($url);
+    }
+
+    public function actionEditcontent($url){
+        $url = str_replace('%20', ' ', $url);
+        $menu = AllusapartsMenu::find()
+            ->where(['url' => $url])
+            ->with('page.videolinks')
+            ->one();
     }
 }

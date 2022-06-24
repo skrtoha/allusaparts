@@ -120,5 +120,7 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
         return $this->password === $password;
     }
 
-
+    public static function isAdmin(){
+        return Yii::$app->user->id == Yii::$app->params['admin_id'];
+    }
 }

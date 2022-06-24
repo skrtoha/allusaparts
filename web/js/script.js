@@ -44,4 +44,22 @@ var ua=navigator.userAgent.toLocaleLowerCase(),
 if(!result){
  userScale=",user-scalable=0"
 }
-document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0'+userScale+'">')
+document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0'+userScale+'">');
+
+$(function(){
+    $('#videolink_add').on('click', function(e){
+        e.preventDefault();
+        const $th = $(this);
+        $th.after(`
+            <div class="videolink">
+                <input class="form-control" name="AllusapartsVideolink[]">
+                <a href="#" class="videolink_remove"></a>
+            </div>
+        `);
+    })
+    $(document).on('click', 'a.videolink_remove', function(e){
+        e.preventDefault();
+        const $th = $(this);
+        $th.closest('div').remove();
+    })
+})

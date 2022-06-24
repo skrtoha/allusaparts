@@ -11,6 +11,8 @@ use Yii;
  * @property string $content
  * @property string $before_content
  * @property string $after_content
+ * @property int $website
+ *
  */
 class UrlContent extends \yii\db\ActiveRecord
 {

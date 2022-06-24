@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
@@ -16,6 +17,9 @@ MyClassAsset::register($this);
 $brands = $this->context->en_brands;
 foreach ($brands as $brand) {
     $li_brand .= '<li><a href="/en/brands/'.strtolower($brand).'">'.$brand.'</a></li>';
+}
+if (User::isAdmin()){
+    $li_brand .= "<li><a href='/content/add-brand'>Добавить</a>";
 }
 ?>
 <?php $this->beginPage() ?>

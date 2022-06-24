@@ -21,7 +21,7 @@ class MyClassAsset extends AssetBundle
     public $basePath = '@webroot'; //алиас каталога с файлами, который соответствует @web
     public $baseUrl = '@web';//Алиас пути к файлам
     public $css = [
-        //'css/bootstrap.4.1.1.min.css',
+        'css/bootstrap.css',
         //'css/main.css?10',
         //'css/v-cloak.css',
     ];

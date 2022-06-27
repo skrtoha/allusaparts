@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
+  <url>
+    <loc>https://allusaparts.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/allison transmission</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/atlas copco</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/caterpillar</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/cummins</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/ditch witch</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/hyundai</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/john deere</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/komatsu</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/brands/mtu</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/contacts</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/allison transmission</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/atlas copco</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/caterpillar</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/cummins</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/ditch witch</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/hyundai</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/john deere</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/komatsu</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/brands/mtu</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://allusaparts.com/en/contacts</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

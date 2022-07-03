@@ -93,7 +93,7 @@ $mainMenu = AllusapartsMenu::getMenu();
                         <div class="block-1">
                             <nav>
                                 <ul class="sf-menu">
-                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/en">Home</a></li>
                                     <?foreach($mainMenu as $id => $value){?>
                                         <li>
                                             <a href="<?=$value['url'] ? "/en/{$value['url']}" : ''?>"><?=$value['name']?></a>

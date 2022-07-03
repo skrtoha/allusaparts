@@ -58,11 +58,15 @@ class DefaultController extends Controller
     }
 
     public function actionPage($main){
+        \Yii::$app->params['lang'] = 'en';
         $menu = AllusapartsMenu::activeQueryMenu()
-            ->where(['m.url' => '/page/'.$main])
+            ->where([
+                'm.url' => '/page/'.$main,
+                'language' => \Yii::$app->params['lang']
+            ])
             ->asArray()
             ->one();
-        return $this->render('main', [
+        return $this->render('@app/views/page/main', [
             'menu' => $menu
         ]);
     }

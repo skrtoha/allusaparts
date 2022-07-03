@@ -9,7 +9,7 @@ $this->registerMetaTag([
 ])
 ?>
 <section class="content">
-    <?=$this->render('/common/_edit_content')?>
+    <?=$this->render('@app/views/common/_edit_content')?>
     <div class="container">
         <h1><?=$menu['h1']?></h1>
         <?=$menu['text']?>

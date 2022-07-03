@@ -1,26 +1,16 @@
 <?php
 
+use app\models\AllusapartsMenu;
 use app\models\User;
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
 use app\assets\MyClassAsset;
+use yii\helpers\Url;
 
 //AppAsset::register($this);
 
 /*....................*/
 MyClassAsset::register($this);
-
-$brands = $this->context->en_brands;
-foreach ($brands as $brand) {
-    $li_brand .= '<li><a href="/en/brands/'.strtolower($brand).'">'.$brand.'</a></li>';
-}
-if (User::isAdmin()){
-    $li_brand .= "<li><a href='/content/add-brand'>Добавить</a>";
-}
+$mainMenu = AllusapartsMenu::getMenu();
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -32,9 +22,9 @@ if (User::isAdmin()){
         <meta name="format-detection" content="telephone=no"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="yandex-verification" content="48b18dadd3dc1edc" />
-        <link rel="alternate" hreflang="x-default" href="https://allusaparts.com<?= $this->context->addUrl ?>" />
-        <link rel="alternate" hreflang="en-US" href="https://allusaparts.com/en<?= $this->context->addUrl ?>" />
-        <link rel="alternate" hreflang="ru-RU" href="https://allusaparts.com<?= $this->context->addUrl ?>" />
+        <link rel="alternate" hreflang="x-default" href="https://allusaparts.com" />
+        <link rel="alternate" hreflang="en-US" href="https://allusaparts.com/en" />
+        <link rel="alternate" hreflang="ru-RU" href="https://allusaparts.com" />
 
 
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
@@ -103,20 +93,22 @@ if (User::isAdmin()){
                         <div class="block-1">
                             <nav>
                                 <ul class="sf-menu">
-                                    <li><a href="/en/">Home</a></li>
-                                    <!--<li class=""><a href="#">Direction</a>
-                                        <ul>
-                                            <li><a href="/direction/">1</a></li>
-                                            <li><a href="/direction/">2</a></li>
-                                            <li><a href="/direction/">3</a></li>
-                                        </ul>
-                                    </li>-->
-                                    <li class=""><a href="#">Brands</a>
-                                        <ul>
-                                            <?= $li_brand ?>
-                                        </ul>
-                                    </li>
-                                    <li><a href="/en/contacts">Contacts</a></li>
+                                    <li><a href="/">Home</a></li>
+                                    <?foreach($mainMenu as $id => $value){?>
+                                        <li>
+                                            <a href="<?=$value['url'] ? "/en/{$value['url']}" : ''?>"><?=$value['name']?></a>
+                                            <?if (!empty($value['childs'])){?>
+                                                <ul>
+                                                    <?foreach($value['childs'] as $v){?>
+                                                        <li><a href="/en/<?=$v['url']?>"><?=$v['name']?></a></li>
+                                                    <?}?>
+                                                </ul>
+                                            <?}?>
+                                        </li>
+                                    <?}?>
+                                    <?if (User::isAdmin()){?>
+                                        <a id="menu_edit" href="<?= Url::to(['/menu/index', 'lang' => 'en'])?>">Change</a>
+                                    <?}?>
                                 </ul>
                             </nav>
                         </div>

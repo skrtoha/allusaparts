@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-use yii\db\ActiveQuery;
+use Yii;
 
 /**
  * This is the model class for table "allusaparts_menu".
@@ -11,6 +11,7 @@ use yii\db\ActiveQuery;
  * @property string $name
  * @property int|null $page_id
  * @property int|null $parent_id
+ * @property string $language
  * @property int $order
  *
  * @property AllusapartsPage $page
@@ -29,7 +30,11 @@ class AllusapartsMenu extends \yii\db\ActiveRecord{
 
     public static function getMenu(){
         if (!empty(self::$menu)) return self::$menu;
-        $commonList = self::find()->orderBy('order')->asArray()->all();
+        $commonList = self::find()
+            ->orderBy('order')
+            ->where(['language' => Yii::$app->params['lang']])
+            ->asArray()
+            ->all();
         $mainList = [];
         $parentList = [];
         foreach($commonList as $value){
@@ -53,8 +58,8 @@ class AllusapartsMenu extends \yii\db\ActiveRecord{
         return [
             [['name'], 'required'],
             [['page_id', 'parent_id', 'order'], 'integer'],
-            [['url', 'name'], 'string', 'max' => 100],
-            [['name'], 'unique', 'targetAttribute' => ['name']],
+            [['url', 'name', 'language'], 'string', 'max' => 100],
+            [['name', 'language'], 'unique', 'targetAttribute' => ['name', 'language']],
             [['page_id'], 'exist', 'skipOnError' => true, 'targetClass' => AllusapartsPage::className(), 'targetAttribute' => ['page_id' => 'id']],
         ];
     }
@@ -84,7 +89,12 @@ class AllusapartsMenu extends \yii\db\ActiveRecord{
 
     public static function getParents(){
         if (!empty(self::$parents)) return self::$parents;
-        $result = self::find()->where(['parent_id' => 0])->all();
+        $result = self::find()
+            ->where([
+                'parent_id' => 0,
+                'language' => Yii::$app->params['lang']
+            ])
+            ->all();
 
         /** @var AllusapartsMenu $value */
         self::$parents[0] = 'ничего не выбрано';

@@ -98,25 +98,27 @@ class ContentController extends SiteController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($menu_id){
+    public function actionUpdate($menu_id, $lang = 'ru'){
         $menu = AllusapartsMenu::find()->where(['id' => $menu_id])->one();
         if ($menu->page_id) $model = $this->findModel($menu->page_id);
         else $model = new AllusapartsPage();
 
+        Yii::$app->params['lang'] = $lang;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $menu->page_id = Yii::$app->db->getLastInsertID();
+            if (!$menu->page_id) $menu->page_id = Yii::$app->db->getLastInsertID();
             $menu->save();
-            AllusapartsVideolink::deleteAll(['page_id' => $_POST['AllusapartsMenu']['page_id']]);
+            AllusapartsVideolink::deleteAll(['page_id' => $menu->page_id]);
             if ($_POST['AllusapartsVideolink']){
                 foreach($_POST['AllusapartsVideolink'] as $value){
                     $videolink = new AllusapartsVideolink();
-                    $videolink->page_id = $_POST['AllusapartsMenu']['page_id'];
+                    $videolink->page_id = $menu->page_id;
                     $videolink->link = $value;
                     $videolink->save();
                 }
 
             }
-            return $this->redirect('/menu/index');
+            return $this->redirect(['/menu/index', 'lang' => Yii::$app->params['lang']]);
         }
 
         return $this->render('update', [

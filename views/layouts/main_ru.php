@@ -24,6 +24,7 @@ foreach ($brandList as $brand) {
 if (User::isAdmin()){
     $li_brand .= "<li><a href='/content/add-brand'>Добавить</a>";
 }
+
 $mainMenu = AllusapartsMenu::getMenu();
 ?>
 <?php $this->beginPage() ?>
@@ -74,12 +75,12 @@ $mainMenu = AllusapartsMenu::getMenu();
             <div class="grid_12 clearfix">
                 <div class="fleft">
                     <a href="/"><img src="/images/logo.png" alt="Steel and Fabrication Industry"></a>
-                    <!--<div class="lang-block">
+                    <div class="lang-block">
                         <span class="lang-link">RUS <i class="fa fa-chevron-down"></i></span>
                         <ul>
                             <li><a href="/en/" class="lang-link">ENG</a></li>
                         </ul>
-                    </div>-->
+                    </div>
                 </div>
                 <a href="#calc" class="calc-link go_to">Расценить запчасть</a>
                 <div class="fright">
@@ -116,7 +117,7 @@ $mainMenu = AllusapartsMenu::getMenu();
                                     </li>
                                 <?}?>
                                 <?if (User::isAdmin()){?>
-                                    <a id="menu_edit" href="<?=Url::to('/menu/index')?>">Изменить</a>
+                                    <a id="menu_edit" href="<?=Url::to(['/menu/index'])?>">Изменить</a>
                                 <?}?>
                             </ul>
                         </nav>

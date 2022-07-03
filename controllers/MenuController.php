@@ -40,12 +40,14 @@ class MenuController extends SiteController
      * Lists all AllusapartsMenu models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex($lang = 'ru'){
+        Yii::$app->params['lang'] = $lang;
+        if (Yii::$app->params['lang'] == 'en') $this->layout = '@app/modules/en/views/layouts/main';
         $searchModel = new AllusapartsMenuSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'lang' => $lang,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -92,9 +94,10 @@ class MenuController extends SiteController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        Yii::$app->params['lang'] = $model->language;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['index', 'lang' => $model->language]);
         }
 
         return $this->render('update', [
@@ -109,11 +112,11 @@ class MenuController extends SiteController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $lang = 'ru')
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'lang' => $lang]);
     }
 
     /**

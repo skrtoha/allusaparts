@@ -40,7 +40,9 @@ class AllusapartsMenuSearch extends AllusapartsMenu
      */
     public function search($params)
     {
-        $query = AllusapartsMenu::find()->orderBy(['parent_id' => SORT_ASC, 'order' => SORT_ASC]);
+        $query = AllusapartsMenu::find()
+            ->where(['language' => \Yii::$app->params['lang']])
+            ->orderBy(['parent_id' => SORT_ASC, 'order' => SORT_ASC]);
 
         // add conditions that should always apply here
 

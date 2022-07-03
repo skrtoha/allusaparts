@@ -7,7 +7,6 @@
 /* @var $brand string */
 
 #region Метатеги
-$this->context->addUrl = '/brands/' . $brand;
 $this->title = $brandInfo['title'];
 $this->registerMetaTag(
     ['name' => 'description', 'content' => $brandInfo['description']]
@@ -69,6 +68,8 @@ $imgSrc = '/images/brands/'.$sanitize_brand_name.'.jpg';
     $ext = "";
     $title = "";
     $i = 0;
+
+    if (!file_exists($directory)) mkdir($directory);
 //пробуем открыть папку
     $dir_handle = @opendir($directory);
     while ($file = readdir($dir_handle))    //поиск по файлам

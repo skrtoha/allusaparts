@@ -7,6 +7,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AllusapartsMenuSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $lang string */
 
 $this->title = 'Allusaparts Menus';
 $this->params['breadcrumbs'][] = $this->title;
@@ -31,7 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'page_id',
                     'format' => 'raw',
                     'value' => function(AllusapartsMenu $model){
-                        return Html::a('Изменить', ['content/update', 'menu_id' => $model->id]);
+                        return Html::a('Изменить', [
+                            'content/update',
+                            'menu_id' => $model->id,
+                            'lang' => Yii::$app->params['lang']
+                        ]);
                     }
                 ],
                 [
@@ -46,8 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{update}{delete}'
-                ],
-            ],
+                ]
+            ]
         ]); ?>
     </div>
 </section>
